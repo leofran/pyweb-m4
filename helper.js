@@ -1,8 +1,8 @@
 t=$('#main-header');
-  var d = new Date();
-  var year=d.getFullYear();
-  var month=d.getMonth();
-  var day=d.getDate();
+  d = new Date();
+  year=d.getFullYear();
+  month=d.getMonth()+1;
+  day=d.getDate();
   t.html("Что день " + day + "." + month + "." + year +"." + " готовит");
 
 advice_url="http://sf-pyw.mosyag.in/m04/api/forecasts"
