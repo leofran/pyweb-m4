@@ -31,6 +31,35 @@
       </div>
     </div>
   </body>
-<script src="helper.js" type="text/javascript">
+<script language="javascript">
+  t=$('#main-header');
+  d = new Date();
+  year=d.getFullYear();
+  month=d.getMonth()+1;
+  day=d.getDate();
+  t.html("Что день " + day + "." + month + "." + year +"." + " готовит");
+
+  advice_url="http://sf-pyw.mosyag.in/m04/api/forecasts"
+
+  function set_content_in_divs(data){
+    $.each(data, function(i, d) {
+    p = $("#p-" + i);
+    p.html("<p>" + d + "</p>");
+    });
+  }
+
+  function getJson(){
+    $.getJSON(advice_url,function(data){
+    prophecies=data['prophecies'];
+    set_content_in_divs(prophecies);
+    });
+  }
+
+  $(".row>div").hover(function(){$(this).css('background-color', 'LightGreen');},function(){$(this).css('background-color', 'inherit');});
+
+  $('#main-header').click(function(){
+    getJson();
+  });
+
 </script>
 </html>
